@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js">
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Spartan:400,600,700,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <h1 class="text-center todoheader"><span style="color: red;">TODO</span> App</h1>
+                <hr>
+                <form action="/add_todo" method="get">
+                    <label for="task_desc" style="font-style: italic; color: dimgray;">DESCRIPTION</label><br>
+                    <div class="form-row">
+                        <textarea placeholder="What do you need to do?" class="col" name="task_desc" id="task_desc" rows="2"></textarea>
+                    </div>
+                    <br>
+                    <div class="form-row">
+                        <div class="col">
+                            <label for="tag" style="font-style:italic; color: green;">CATEGORY</label><br>
+                            <select class="col" name="tag" id="tag">
+                                <option value="" style="font-style:italic;">Choose a category</option>
+                                <option value="Personal">Personal</option>
+                                <option value="Work">Work</option>
+                                <option value="School">School</option>
+                                <option value="Home">Cleaning</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="due_date" style="font-style: italic; color: red;">DUE DATE</label><br>
+                            <input type="date" name="due_date" id="due_date">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-row">
+                        <button type="submit" class="btn btn-success" id="add_task_btn"> <i class="fa fa-plus"></i> ADD TASK</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div  class="row" style="margin-top: 2%;">
+            <div class="col-2"></div>
+            <div class="col-8 text-center">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col" style="color: blue;">Category</th>
+                    <th scope="col" style="color: brown;">Task</th>
+                    <th scope="col" style="color:darkblue">Due Date</th>
+                    <th scope="col" style="color: crimson;">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <%for(list of data){%>
+                        <tr>
+                            <td style="color: darkorange;"> <%= list.tag %></td>
+                            <td style="color: darkorchid;"><%= list.task_desc %> </td>
+                            <td style="color: darkred;"><%= list.due_date %></td>
+                            <td> <a href="/delete_task/?task_desc=<%= list.task_desc %>&tag=<%= list.tag %>&due_date=<%= list.due_date %>">
+                                <button class="btn btn-danger">Delete</button>
+                            </a></td>
+                        </tr>
+                        
+                        <%}%>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+    <script src="./js/script.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

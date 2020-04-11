@@ -1,0 +1,23 @@
+body {
+    font-family: Spartan;
+    font-weight: 800;
+}
+
+textarea, select, input {
+    border: none;
+    border-bottom: 2px solid darkblue;
+}
+
+select, input {
+    width: 100%;
+}
+
+select {
+    height: 1.8em;
+    background-color:white;
+}
+
+#add_task_btn {
+    margin: auto;
+}
+
